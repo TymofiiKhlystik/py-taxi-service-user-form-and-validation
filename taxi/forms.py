@@ -8,7 +8,7 @@ from taxi.models import Driver, Car
 
 class DriverCreateForm(UserCreationForm):
     class Meta:
-        model = Driver
+        model = get_user_model()
         fields = [
             "username",
             "first_name",
@@ -35,7 +35,7 @@ class DriverCreateForm(UserCreationForm):
 
 class DriverLicenseUpdateForm(forms.ModelForm):
     class Meta:
-        model = Driver
+        model = get_user_model()
         fields = ["license_number"]
 
     def clean_license_number(self):
@@ -60,6 +60,7 @@ class CarCreateForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
+
     class Meta:
         model = Car
         fields = "__all__"
