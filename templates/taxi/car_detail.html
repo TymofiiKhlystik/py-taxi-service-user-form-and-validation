@@ -11,7 +11,7 @@
       Update
     </a>
   </h1>
-  <p>Manufacturer: ({{ car.manufacturer.name }}, {{ car.manufacturer.country }})</p>
+  <p>Manufacturer: <b>({{ car.manufacturer.name }}, {{ car.manufacturer.country }})</b></p>
   <h1>Drivers</h1>
   <hr>
   {% if user.is_authenticated %}
@@ -27,10 +27,16 @@
       </form>
     {% endif %}
   {% endif %}
+  <br>
 
   <ul>
     {% for driver in car.drivers.all %}
-      <li>{{ driver.username }} ({{ driver.first_name }} {{ driver.last_name }})</li>
+      <li>Username: <b>{{ driver.username }}</b></li>
+      Full Name: <b>({{ driver.first_name }} {{ driver.last_name }})</b>
+      <br>
+      License Number: <b>({{ driver.license_number }})</b>
+      <br>
+      -------------------
     {% endfor %}
   </ul>
 {% endblock %}
